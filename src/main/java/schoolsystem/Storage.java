@@ -36,6 +36,11 @@ public class Storage {
 
         }while(!choice.equalsIgnoreCase("q"));
 
+        Storage.stopProject();
 
+
+    }
+
+    public static void stopProject() {
     }
 }

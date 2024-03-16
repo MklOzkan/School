@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Storage {
 
     static Scanner scan = new Scanner(System.in);
-    public static void mainMenu() {
+    public static void mainMenu() throws InterruptedException {
 
         String choice = "";
 
@@ -22,6 +22,7 @@ public class Storage {
 
         switch (choice){
             case "1"://School information
+                schoolInformationPrint();
                 break;
             case "2"://Teacher Page
                 break;
@@ -41,6 +42,15 @@ public class Storage {
 
     }
 
+    public static void schoolInformationPrint() throws InterruptedException {
+        System.out.println("============= STAR HIGH SCHOOL  =============\n" +
+                "\t\t Address : " + School.address +
+                "\n\t\t Phone Number : " + School.mobilePhone);
+        Thread.sleep(5000);
+    }
+
+
     public static void stopProject() {
+        System.out.println("You exited from Application");
     }
 }

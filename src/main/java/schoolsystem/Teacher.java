@@ -10,6 +10,7 @@ public class Teacher {
     static Scanner scan =  new Scanner(System.in);
     static Map<String, String> teacherMap = new HashMap<>();
     public static void addTeacher() {
+
         teacherMap.put("123456987411", "Ali, Can, 1980, Matematik");
         teacherMap.put("123456987412", "Veli, Yan, 1981, Fizik");
         teacherMap.put("123456987413", "Ayse, Can, 1982, Kimya");
@@ -43,13 +44,13 @@ public class Teacher {
                     findTeacherFromLastname();
                     break;//Find a Teacher from Branch
                 case "3" :
-
+                    findTeacherWithLastname();
                     break;
                 case "4" :
-
+                    addTeacherInfo();
                     break;
                 case "5" :
-
+                    deleteTeacherWithId();
                     break;
                 case "m" :
                 case "M" :
@@ -69,9 +70,52 @@ public class Teacher {
         Storage.stopProject();
     }
 
+    public static void addTeacherInfo() {
+        System.out.println("Please enter your ID");
+        String key = scan.nextLine();
+        System.out.println("Please enter first name");
+        String fName = scan.nextLine();
+        System.out.println("Please enter Last name");
+        String lName = scan.nextLine();
+        System.out.println("Please enter year of birthdate");
+        String yOfBirthdate = scan.nextLine();
+        System.out.println("Please enter branch");
+        String branch = scan.nextLine();
+
+        String value = fName + ", " + lName + ", " +yOfBirthdate + ", " + branch;
+        teacherMap.put(key,value);
+    }
+
+    public static void deleteTeacherWithId() {
+    }
+
+    public static void findTeacherWithLastname() throws InterruptedException {
+        System.out.println("Please enter the Branch of the Teacher");
+        String branch= scan.nextLine();
+
+        Set<Map.Entry<String, String>> teacherEntrySet =teacherMap.entrySet();
+
+        System.out.println("============= STAR HIGH SCHOOL  =============\n" +
+                "=============FIND TEACHER WITH BRANCH =============\n" +
+                "ID Number        Name     Last Name      Birthdate      Branch");
+
+        for (Map.Entry<String, String> each : teacherEntrySet) {
+            String eachKey = each.getKey();
+            String eachValue = each.getValue();
+            String[] eachValuarr = eachValue.split(", ");
+
+            if (branch.equalsIgnoreCase(eachValuarr[3])){
+                System.out.printf("%11s    %-9s  %-8s   %4s             %-6s\n" , eachKey , eachValuarr[0],
+                        eachValuarr[1], eachValuarr[2], eachValuarr[3]);
+            }
+
+        }
+        Thread.sleep(5000);
+    }
+
     public static void findTeacherFromLastname() throws InterruptedException {
 
-        System.out.println("Please enter the lastname of the Teacher");
+        System.out.println("Please enter the Lastname of the Teacher");
         String lastname = scan.nextLine();
 
         Set<Map.Entry<String, String>> teacherEntrySet =teacherMap.entrySet();
@@ -86,7 +130,7 @@ public class Teacher {
             String[] eachValuarr = eachValue.split(", ");
 
             if (lastname.equalsIgnoreCase(eachValuarr[1])){
-                System.out.printf("%11s    %-9s  %-8s   %4s %-6s\n" , eachKey , eachValuarr[0],
+                System.out.printf("%11s    %-9s  %-8s   %4s               %-6s\n" , eachKey , eachValuarr[0],
                         eachValuarr[1], eachValuarr[2], eachValuarr[3]);
             }
 
@@ -106,7 +150,7 @@ public class Teacher {
             String eachKey = each.getKey();
             String eachValue = each.getValue();
             String[] eachValuarr = eachValue.split(", ");
-            System.out.printf("%11s    %-9s  %-8s   %4s %-6s\n" , eachKey , eachValuarr[0],
+            System.out.printf("%11s    %-9s  %-8s   %4s              %-6s\n" , eachKey , eachValuarr[0],
                     eachValuarr[1], eachValuarr[2], eachValuarr[3]);
 
         }

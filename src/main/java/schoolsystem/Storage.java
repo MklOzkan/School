@@ -25,14 +25,14 @@ public class Storage {
                 schoolInformationPrint();
                 break;
             case "2"://Teacher Page
+                Teacher.teacherMenu();
                 break;
             case "3"://Student Page
                 break;
-            case "q":
-            case "Q":
+            case "q", "Q":
                 break;
             default:
-                System.out.println("Please enter a valid choice");
+                System.out.println("Please make a valid choice");
         }
 
         }while(!choice.equalsIgnoreCase("q"));

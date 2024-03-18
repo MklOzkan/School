@@ -19,7 +19,7 @@ public class Teacher {
 
     }
 
-    public static void teacherMenu() throws InterruptedException {
+    public static void teacherPage() throws InterruptedException {
 
         String choice = "";
 
@@ -86,7 +86,31 @@ public class Teacher {
         teacherMap.put(key,value);
     }
 
-    public static void deleteTeacherWithId() {
+    public static void deleteTeacherWithId() throws InterruptedException {
+        System.out.println("please enter the Id to delete teacher Info");
+        String teacherId= scan.nextLine();
+
+        String deletedTeacherInfo = teacherMap.get(teacherId);
+
+        String deletedValue = teacherMap.remove(teacherId);
+
+        try {
+            boolean result = deletedValue.equals(deletedTeacherInfo);
+            System.out.println("The teacher with " + teacherId + " no : " +"\""+ deletedTeacherInfo +"\""+ " successfully deleted.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid Id");
+        }
+
+        /*if (teacherMap.containsKey(deleteTeacherInfo)){
+            System.out.println(teacherMap.get(deleteTeacherInfo));
+            teacherMap.remove(deleteTeacherInfo);
+            System.out.println("The Registration is deleted successfully");
+        }else {
+            System.out.println("Please enter a valid Id");
+        }*/
+
+        Thread.sleep(5000);
+
     }
 
     public static void findTeacherWithLastname() throws InterruptedException {

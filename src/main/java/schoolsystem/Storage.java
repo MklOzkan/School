@@ -25,11 +25,13 @@ public class Storage {
                 schoolInformationPrint();
                 break;
             case "2"://Teacher Page
-                Teacher.teacherMenu();
+                Teacher.teacherPage();
                 break;
             case "3"://Student Page
+                Student.studentPage();
                 break;
-            case "q", "Q":
+            case "q":
+            case"Q":
                 break;
             default:
                 System.out.println("Please make a valid choice");

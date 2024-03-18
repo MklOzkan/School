@@ -1,11 +1,13 @@
 package schoolsystem;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Student {
 
     static Scanner scan =  new Scanner(System.in);
-    static Map<String, String> studentMap = new HashMap<>();
+    static Map<String, String> studentMap = new LinkedHashMap<>();
 
     public static void addStudent() {
 
@@ -136,11 +138,40 @@ public class Student {
         }
         Thread.sleep(5000);
     }
-    public static void addStudentInfo() {
-        System.out.println("Please enter your ID");
-        String key = scan.nextLine();
-        System.out.println("Please enter first name");
-        String fName = scan.nextLine();
+    public static void addStudentInfo() throws InterruptedException {
+        String key ="";
+        int l =0;
+        do {
+
+                System.out.println("Please enter your ID");
+                key = scan.nextLine();
+                l = key.length();
+                if (!key.isEmpty()&&l==11){
+                    continue;
+                }else {
+                    System.out.println("Id must not be empty and its length must be 11 ");
+                    Thread.sleep(3000);
+                }
+
+        }while (key != null&&l!=11);
+
+        String fName ="";
+        do {
+
+            System.out.println("Please enter first name");
+            fName = scan.nextLine();
+            if (!fName.isEmpty()
+            ){
+                continue;
+            }else {
+                System.out.println("Name must not be empty!");
+                Thread.sleep(2000);
+            }
+
+        }while (key != null&&l!=11);
+
+
+
         System.out.println("Please enter Last name");
         String lName = scan.nextLine();
         System.out.println("Please enter year of birthdate");
@@ -152,7 +183,6 @@ public class Student {
         System.out.println("Please enter branch");
         String branch = scan.nextLine();
 
-
         String value = fName + ", " + lName + ", " +yOfBirthdate + ", " + studentId + ", " + classLevel + ", " + branch;
         studentMap.put(key,value);
 
@@ -160,7 +190,23 @@ public class Student {
     public static void lessonInfo() {
     }
 
-    public static void deleteStudent() {
+    public static void deleteStudent() throws InterruptedException {
+
+        System.out.println("please enter the Id to delete teacher Info");
+        String studentId= scan.nextLine();
+
+        String deletedTeacherInfo = studentMap.get(studentId);
+
+        String deletedValue = studentMap.remove(studentId);
+
+        try {
+            boolean result = deletedValue.equals(deletedTeacherInfo);
+            System.out.println("The student with " + studentId + " no : " +"\""+ deletedTeacherInfo +"\""+ " successfully deleted.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid Id");
+        }
+
+        Thread.sleep(5000);
     }
 
 

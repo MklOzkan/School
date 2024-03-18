@@ -39,7 +39,7 @@ public class Student {
 
             switch (choice){
                 case "1":
-                    studentList();
+                    studentList();//ok
                     break;
                 case "2":
                     findStudentWithLastname();
@@ -48,7 +48,7 @@ public class Student {
                     findStudentWithClassAndBranch();
                     break;
                 case "4":
-                    addStudentInfo();
+                    addStudentInfo();//ok
                     break;
                 case "5":
                     lessonInfo();
@@ -87,9 +87,54 @@ public class Student {
         Thread.sleep(5000);
 
     }
-    public static void findStudentWithLastname() {
+    public static void findStudentWithLastname() throws InterruptedException {
+        System.out.println("Please enter last name of student");
+        String lName = scan.nextLine();
+
+        Set<Map.Entry<String, String>> studentEntrySet =studentMap.entrySet();
+
+        System.out.println("""
+                ============= STAR HIGH SCHOOL  =============
+                ============= FIND STUDENT WITH LAST NAME =============
+                ID Number      Name     LastName      Birthdate  StudentId   Class  Branch""");
+
+        for (Map.Entry<String, String> each : studentEntrySet) {
+            String eachKey = each.getKey();
+            String eachValue = each.getValue();
+            String[] eachValuarr = eachValue.split(", ");
+            if (lName.equalsIgnoreCase(eachValuarr[1])) {
+                System.out.printf("%11s    %-9s  %-8s       %4s       %-8s %4s    %2s\n", eachKey, eachValuarr[0],
+                        eachValuarr[1], eachValuarr[2], eachValuarr[3], eachValuarr[4], eachValuarr[5]);
+            }
+
+        }
+        Thread.sleep(5000);
     }
-    public static void findStudentWithClassAndBranch() {
+    public static void findStudentWithClassAndBranch() throws InterruptedException {
+
+        System.out.println("Please enter class of student");
+        String classLevel = scan.nextLine();
+        System.out.println("Please enter branch of student");
+        String branch = scan.nextLine();
+
+        Set<Map.Entry<String, String>> studentEntrySet =studentMap.entrySet();
+
+        System.out.println("""
+                ============= STAR HIGH SCHOOL  =============
+                ============= FIND STUDENT WITH LAST NAME =============
+                ID Number      Name     LastName      Birthdate  StudentId   Class  Branch""");
+
+        for (Map.Entry<String, String> each : studentEntrySet) {
+            String eachKey = each.getKey();
+            String eachValue = each.getValue();
+            String[] eachValuarr = eachValue.split(", ");
+            if (classLevel.equalsIgnoreCase(eachValuarr[4])&&branch.equalsIgnoreCase(eachValuarr[5])) {
+                System.out.printf("%11s    %-9s  %-8s       %4s       %-8s %4s    %2s\n", eachKey, eachValuarr[0],
+                        eachValuarr[1], eachValuarr[2], eachValuarr[3], eachValuarr[4], eachValuarr[5]);
+            }
+
+        }
+        Thread.sleep(5000);
     }
     public static void addStudentInfo() {
         System.out.println("Please enter your ID");

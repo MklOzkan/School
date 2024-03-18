@@ -54,5 +54,6 @@ public class Storage {
 
     public static void stopProject() {
         System.out.println("You exited from Application");
+        System.exit(0);
     }
 }

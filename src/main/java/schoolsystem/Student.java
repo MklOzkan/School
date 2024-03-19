@@ -1,7 +1,7 @@
 package schoolsystem;
 
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Student {
@@ -75,7 +75,7 @@ public class Student {
         Set<Map.Entry<String, String>> studentEntrySet =studentMap.entrySet();
 
         System.out.println("============= STAR HIGH SCHOOL  =============\n" +
-                "============= TEACHER PAGE =============\n" +
+                "============= STUDENT PAGE =============\n" +
                 "ID Number      Name     LastName      Birthdate  StudentId   Class  Branch");
 
         for (Map.Entry<String, String> each : studentEntrySet) {
@@ -160,26 +160,73 @@ public class Student {
 
             System.out.println("Please enter first name");
             fName = scan.nextLine();
-            if (!fName.isEmpty()
-            ){
+            if (!fName.isEmpty()){
                 continue;
             }else {
                 System.out.println("Name must not be empty!");
                 Thread.sleep(2000);
             }
 
-        }while (key != null&&l!=11);
+        }while (fName == null);
+
+        String lName ="";
+        do {
+            System.out.println("Please enter Last name");
+            lName = scan.nextLine();
+            if (!lName.isEmpty()){
+                continue;
+            }else {
+                System.out.println("Lastname must not be empty!");
+                Thread.sleep(2000);
+            }
+
+        }while (lName==null);
+
+        String yOfBirthdate = "";
+        do {
+            System.out.println("Please enter year of birthdate");
+            yOfBirthdate = scan.nextLine();
+
+            if (!yOfBirthdate.isEmpty()){
+                continue;
+            }else {
+                System.out.println("Year of birthdate must not be empty!");
+                Thread.sleep(2000);
+            }
+        }while (yOfBirthdate == null);
+
+        LocalDate myDate = LocalDate.now();
+        String registrationYear = String.valueOf(myDate.getYear());
+
+        String tailNum = "";
+        if (studentMap.size()<10){
+            tailNum= "00" + (studentMap.size()+1);
+        } else if (studentMap.size()<100) {
+            tailNum= "0" + (studentMap.size()+1);
+        }else {
+            tailNum=  ""+studentMap.size()+1;
+        }
+        String studentId = registrationYear.substring(2) + yOfBirthdate.substring(2) + tailNum;
+
+        String classLevel ="";
+        do {
+            System.out.println("Please enter class");
+            classLevel = scan.nextLine();
+
+            if (!classLevel.isEmpty()){
+                continue;
+            }else {
+                System.out.println("Class must not be empty!");
+                Thread.sleep(2000);
+            }
+
+
+        }while (classLevel==null);
 
 
 
-        System.out.println("Please enter Last name");
-        String lName = scan.nextLine();
-        System.out.println("Please enter year of birthdate");
-        String yOfBirthdate = scan.nextLine();
-        System.out.println("Please enter student ID");
-        String studentId = scan.nextLine();
-        System.out.println("Please enter class");
-        String classLevel = scan.nextLine();
+
+
         System.out.println("Please enter branch");
         String branch = scan.nextLine();
 
